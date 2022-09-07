@@ -1,8 +1,7 @@
 import {
   checkDevtoolsGlobalHook,
-  getVsCodeLink,
-  findFiberByHostInstance,
-} from "./utils";
+  findFiberByHostInstance, getWebStormLink,
+} from "./utils"
 import Overlay from "./Overlay";
 
 let overlay: Overlay | null = null;
@@ -71,7 +70,7 @@ const handleInspectorClick = (e: MouseEvent) => {
   document.getElementById(tmpId)?.removeAttribute("id");
   target.id = tmpId;
   window.postMessage("inspected", "*");
-  window.open(getVsCodeLink(fiber._debugSource));
+  window.open(getWebStormLink(fiber._debugSource));
 };
 
 window.addEventListener("message", ({ data }: { data: string }) => {
